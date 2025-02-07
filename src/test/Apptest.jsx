@@ -1,6 +1,8 @@
 import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { setInformation } from '../redux/features/Slice';
+import Home from '../Pages/Home';
+import '../App.css'
 
 
 function Apptest() {
@@ -14,7 +16,7 @@ function Apptest() {
 
         <>
 
-            <h1>{PersonalInformation}</h1>
+            <Home />
 
         </>
 
