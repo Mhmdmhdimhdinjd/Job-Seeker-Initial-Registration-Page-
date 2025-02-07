@@ -24,7 +24,7 @@ const Selectcomponent = ({errors, data}) => {
                         closeMenuOnSelect={data.closeMenuOnSelect}
                     />
 
-      {errors[data.name] && <Typography color="error">{errors[data.name].message}</Typography>}
+      {errors[data.name] && <Typography color="error" fontSize={'0.75rem'}>{errors[data.name].message}</Typography>}
 
 
         </>
