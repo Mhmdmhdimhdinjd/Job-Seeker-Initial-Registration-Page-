@@ -8,6 +8,7 @@ const counterSlice = createSlice({
   reducers: {
     setInformation: (state , action ) => {
       state.PersonalInformation = action.payload;
+      console.log(state.PersonalInformation)
     },
   }
 });

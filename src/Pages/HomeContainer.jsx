@@ -1,4 +1,6 @@
 import React from "react";
+import { useDispatch } from 'react-redux';
+import { setInformation } from "../redux/features/Slice";
 import { useForm, Controller } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
@@ -8,6 +10,8 @@ import Selectcomponentcontainer from '../components/selectcomponents/container';
 import TextFieldcomponentcontainer from "../components/textFieldcomponents/container";
 import CkComponentContainer from "../components/ckcomponent/container";
 import Navbar from "../components/Navbarcomponents";
+import DataTable from "../components/tablecomponent";
+
 
 
 const theme = createTheme({
@@ -46,7 +50,7 @@ const schema = yup.object().shape({
     phoneNumber: yup.string().matches(/^09\d{9}$/, 'شماره تماس باید 11 رقم و با 09 شروع شود').required('شماره تماس ضروری است'),
     categories: yup.array().max(2, 'حداکثر ۲ دسته‌بندی می‌توانید انتخاب کنید').required('انتخاب دسته‌بندی‌ها ضروری است'),
     interests: yup.array().max(3, 'حداکثر ۳ گزینه می‌توانید انتخاب کنید').required('انتخاب گزینه‌ها اجباری است'),
-    ck: yup.string().min(20, 'رزومه باید حداقل 20 حرف باشد').required('رزومه ضروری است'),
+    // ck: yup.string().min(20, 'رزومه باید حداقل 20 حرف باشد').required('رزومه ضروری است'),
     province: yup.object().required("استان را انتخاب کنید"),
     city: yup.object().required("شهر را انتخاب کنید"),
 });
@@ -54,25 +58,30 @@ const schema = yup.object().shape({
 const HomeContainer = () => {
     const { control, handleSubmit, setValue, watch, formState: { errors } } = useForm({
         resolver: yupResolver(schema),
-        mode: 'onChange', // اعتبارسنجی هنگام تغییر
-        reValidateMode: 'onChange', // به‌روزرسانی اعتبارسنجی هنگام تغییر
+        mode: 'onChange', 
+        reValidateMode: 'onChange', 
     });
 
     const onSubmit = data => {
         console.log(data);
+        dispatch(setInformation(data))
     };
+
+    const dispatch = useDispatch();
+
 
     return (
         <ThemeProvider theme={theme}>
-            <Navbar/>
+            <Navbar />
             <Container>
                 <form noValidate autoComplete="off" onSubmit={handleSubmit(onSubmit)}>
                     <Grid container spacing={4}>
                         <TextFieldcomponentcontainer Controller={Controller} control={control} errors={errors} />
                         <Selectcomponentcontainer Controller={Controller} control={control} watch={watch} setValue={setValue} errors={errors} />
                         <CkComponentContainer Controller={Controller} control={control} errors={errors} />
+                        <DataTable />
                     </Grid>
-                    <button type="submit">123</button>
+                    <button type="submit">تایید</button>
                 </form>
             </Container>
         </ThemeProvider>

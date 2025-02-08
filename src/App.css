@@ -1,16 +1,41 @@
 @font-face {
-    font-family: gandom;
-    src: url(./assets/fonts/gandom-font/Gandom.ttf);
-  }
-  
-  * {
-    font-family: gandom;
-    direction: rtl;
-  }
-  
-  body {
-    background-color:#f8f9fa;
-    direction: ltr;
-    overflow:visible;
-    margin: 0;
-  }
+  font-family: gandom;
+  src: url(./assets/fonts/gandom-font/Gandom.ttf);
+}
+
+* {
+  font-family: gandom;
+  direction: rtl;
+}
+
+body {
+  background-color: #f8f9fa;
+  direction: ltr;
+  overflow: visible;
+  margin: 0;
+}
+
+
+.table {
+  background-color: #292929;
+  border-collapse: collapse;
+  border-radius: 10px;
+  font-family: 'Arial', sans-serif;
+  overflow-x: auto;
+  margin-top: 2rem;
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  -ms-border-radius: 10px;
+  -o-border-radius: 10px;
+}
+
+.table th,
+.table td {
+  border: 1px solid #444;
+  padding: 10px;
+}
+.text-wrap { white-space: normal; }
+.table th {
+  color: #1e90ff;
+  /* آبی برای اولین هدر */
+}
