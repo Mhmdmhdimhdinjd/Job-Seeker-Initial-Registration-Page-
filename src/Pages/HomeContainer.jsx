@@ -7,6 +7,8 @@ import { Grid, Container, ThemeProvider, createTheme } from "@mui/material";
 import Selectcomponentcontainer from '../components/selectcomponents/container';
 import TextFieldcomponentcontainer from "../components/textFieldcomponents/container";
 import CkComponentContainer from "../components/ckcomponent/container";
+import Navbar from "../components/Navbarcomponents";
+
 
 const theme = createTheme({
     typography: {
@@ -62,6 +64,7 @@ const HomeContainer = () => {
 
     return (
         <ThemeProvider theme={theme}>
+            <Navbar/>
             <Container>
                 <form noValidate autoComplete="off" onSubmit={handleSubmit(onSubmit)}>
                     <Grid container spacing={4}>
