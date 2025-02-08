@@ -8,7 +8,6 @@ import Selectcomponentcontainer from '../components/selectcomponents/container';
 import TextFieldcomponentcontainer from "../components/textFieldcomponents/container";
 import CkComponentContainer from "../components/ckcomponent/container";
 
-
 const theme = createTheme({
     typography: {
         fontFamily: 'gandom',
@@ -16,7 +15,7 @@ const theme = createTheme({
     components: {
         MuiTextField: {
             defaultProps: {
-                size: 'small', // تنظیم اندازه پیش‌فرض تکست فیلد به کوچک
+                size: 'small',
             },
             styleOverrides: {
                 root: {
@@ -38,7 +37,6 @@ const theme = createTheme({
     },
 });
 
-
 const schema = yup.object().shape({
     firstName: yup.string().matches(/^[\u0600-\u06FF\s]+$/, 'فقط حروف فارسی مجاز است').required('نام ضروری است'),
     lastName: yup.string().matches(/^[\u0600-\u06FF\s]+$/, 'فقط حروف فارسی مجاز است').required('نام خانوادگی ضروری است'),
@@ -49,13 +47,13 @@ const schema = yup.object().shape({
     ck: yup.string().min(20, 'رزومه باید حداقل 20 حرف باشد').required('رزومه ضروری است'),
     province: yup.object().required("استان را انتخاب کنید"),
     city: yup.object().required("شهر را انتخاب کنید"),
-    // files: yup.array().required("عکس یادت نره").max(1, 'حداکثر یک فایل باید انتخاب شود')
 });
 
 const HomeContainer = () => {
-
     const { control, handleSubmit, setValue, watch, formState: { errors } } = useForm({
-        resolver: yupResolver(schema)
+        resolver: yupResolver(schema),
+        mode: 'onChange', // اعتبارسنجی هنگام تغییر
+        reValidateMode: 'onChange', // به‌روزرسانی اعتبارسنجی هنگام تغییر
     });
 
     const onSubmit = data => {
@@ -65,27 +63,17 @@ const HomeContainer = () => {
     return (
         <ThemeProvider theme={theme}>
             <Container>
-                <form onSubmit={handleSubmit(onSubmit)}>
-
-                    <Grid container spacing={4} >
-
+                <form noValidate autoComplete="off" onSubmit={handleSubmit(onSubmit)}>
+                    <Grid container spacing={4}>
                         <TextFieldcomponentcontainer Controller={Controller} control={control} errors={errors} />
-
                         <Selectcomponentcontainer Controller={Controller} control={control} watch={watch} setValue={setValue} errors={errors} />
-
-                        <CkComponentContainer Controller={Controller} control={control} errors={errors}/>
-
+                        <CkComponentContainer Controller={Controller} control={control} errors={errors} />
                     </Grid>
-
                     <button type="submit">123</button>
-
                 </form>
             </Container>
         </ThemeProvider>
+    );
+};
 
-    )
-
-}
-
-
-export default HomeContainer
+export default HomeContainer;

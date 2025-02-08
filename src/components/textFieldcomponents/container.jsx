@@ -8,28 +8,28 @@ const TextFielddata = [
         title: 'نام',
         name: 'firstName',
         placeholder: 'enter your first name',
-        defaultValue:null
+        defaultValue: null
     },
     {
         id: 2,
         title: 'نام خانوادگی',
         name: 'lastName',
         placeholder: 'enter your last name',
-        defaultValue:null
+        defaultValue: null
     },
     {
         id: 3,
         title: 'شماره تماس',
         name: 'phoneNumber',
         placeholder: 'لطفا شماره تماستون رو وارد کنید',
-        defaultValue:'09'
+        defaultValue: '09',
     },
     {
         id: 4,
         title: 'کد ملی',
         name: 'nationalCode',
         placeholder: 'لطفا کد ملی تون رو وارد کنید',
-        defaultValue:null
+        defaultValue: null
     },
 ]
 
@@ -46,11 +46,14 @@ const TextFieldcomponentcontainer = ({ Controller, control, errors }) => {
                         <Controller
                             name={data.name}
                             control={control}
+                            defaultValue={data.defaultValue}
                             render={({ field }) => (
                                 <TextFieldcomponent
-                                {...field}
-                                errors={errors}
-                                data={data}
+                                    {...field}
+                                    errors={errors}
+                                    data={data}
+                                    value={field.value}
+                                    onChange={field.onChange}
                                 />
                             )}
                         />
