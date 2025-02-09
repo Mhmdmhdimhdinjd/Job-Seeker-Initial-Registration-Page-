@@ -4,14 +4,14 @@ import { setInformation } from "../redux/features/Slice";
 import { useForm, Controller } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
-import { Grid, Container, ThemeProvider, createTheme } from "@mui/material";
+import { Grid, Container, ThemeProvider, createTheme ,Box , Button} from "@mui/material";
 
 import Selectcomponentcontainer from '../components/selectcomponents/container';
 import TextFieldcomponentcontainer from "../components/textFieldcomponents/container";
 import CkComponentContainer from "../components/ckcomponent/container";
 import Navbar from "../components/Navbarcomponents";
 import DataTable from "../components/tablecomponent";
-
+import Genedercomponents from "../components/Genedercomponent";
 
 
 const theme = createTheme({
@@ -77,11 +77,16 @@ const HomeContainer = () => {
                 <form noValidate autoComplete="off" onSubmit={handleSubmit(onSubmit)}>
                     <Grid container spacing={4}>
                         <TextFieldcomponentcontainer Controller={Controller} control={control} errors={errors} />
+                        <Genedercomponents control={control} Controller={Controller} errors={errors}/>
                         <Selectcomponentcontainer Controller={Controller} control={control} watch={watch} setValue={setValue} errors={errors} />
                         <CkComponentContainer Controller={Controller} control={control} errors={errors} />
-                        <DataTable />
+                        {/* <Grid item xs={6}><DataTable /></Grid> */}
                     </Grid>
-                    <button type="submit">تایید</button>
+                    <Box sx={{direction:'ltr'}}>
+
+                    <Button sx={{margin:'2rem 0'}} color="primary" size="large" variant="contained" type="submit">ثـــبت اطـــلاعات اولیه</Button>
+
+                    </Box>
                 </form>
             </Container>
         </ThemeProvider>

@@ -28,11 +28,11 @@ const DataTable = () => {
       lastName: item.lastName,
       phoneNumber: item.phoneNumber,
       nationalCode: item.nationalCode,
-      province: item.province.label,
-      city: item.city.label,
-      categories: item.categories.map(category => category.label).join(','),
-    //   gender: item.gender,
-      interests: item.interests.map(interest => interest.label).join(','),
+    //   province: item.province.label,
+    //   city: item.city.label,
+    //   categories: item.categories.map(category => category.label).join(','),
+      gender: item.gender,
+    //   interests: item.interests.map(interest => interest.label).join(','),
       ck: item.ck
     }));
 
@@ -45,9 +45,9 @@ const DataTable = () => {
       { Header: 'استان', accessor: 'province' },
       { Header: 'شهر', accessor: 'city' },
       { Header: 'دسته‌بندی‌ها', accessor: 'categories' },
-    //   { Header: 'جنسیت', accessor: 'gender' },
+      { Header: 'جنسیت', accessor: 'gender' },
       { Header: 'علاقه‌مندی‌ها', accessor: 'interests' },
-    //   { Header: 'متن', accessor: 'ck' ,Cell: ({ row }) => <div className="text-wrap">{row.details}</div> }
+      { Header: 'متن', accessor: 'ck' ,Cell: ({ row }) => <div className="text-wrap">{row.details}</div> }
     ],
     []
   );
