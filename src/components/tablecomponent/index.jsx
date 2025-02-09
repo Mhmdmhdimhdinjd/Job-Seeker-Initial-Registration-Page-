@@ -1,3 +1,4 @@
+import { Typography } from "@mui/material";
 import React, {useMemo } from "react";
 import { useSelector } from "react-redux";
 import { useTable } from 'react-table';
@@ -28,12 +29,11 @@ const DataTable = () => {
       lastName: item.lastName,
       phoneNumber: item.phoneNumber,
       nationalCode: item.nationalCode,
-    //   province: item.province.label,
-    //   city: item.city.label,
-    //   categories: item.categories.map(category => category.label).join(','),
+      province: item.province.label,
+      city: item.city.label,
+      categories: item.categories.map(category => category.label).join(','),
       gender: item.gender,
-    //   interests: item.interests.map(interest => interest.label).join(','),
-      ck: item.ck
+      interests: item.interests.map(interest => interest.label).join(','),
     }));
 
   const columns = useMemo(
@@ -47,7 +47,6 @@ const DataTable = () => {
       { Header: 'دسته‌بندی‌ها', accessor: 'categories' },
       { Header: 'جنسیت', accessor: 'gender' },
       { Header: 'علاقه‌مندی‌ها', accessor: 'interests' },
-      { Header: 'متن', accessor: 'ck' ,Cell: ({ row }) => <div className="text-wrap">{row.details}</div> }
     ],
     []
   );
@@ -61,7 +60,7 @@ const DataTable = () => {
   } = useTable({ columns, data });
 
   return (
-    <div>
+    <div className="table__container">
       {rows.map(row => {
         prepareRow(row);
         return (
@@ -79,6 +78,11 @@ const DataTable = () => {
           </table>
         );
       })}
+
+<Typography>
+  درصورتی که جدول بصورت کامل مشخص نیست اسکرول کنید
+</Typography>
+
     </div>
   );
 };

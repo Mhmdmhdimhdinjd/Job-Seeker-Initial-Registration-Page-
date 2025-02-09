@@ -3,7 +3,7 @@ import { createSlice } from '@reduxjs/toolkit';
 const counterSlice = createSlice({
   name: 'job_seeker',
   initialState: {
-    PersonalInformation: [
+    PersonalInformation: 
       {
         "firstName": "محمد مهدی",
         "lastName": "مهدی نژاد",
@@ -40,7 +40,7 @@ const counterSlice = createSlice({
         ],
         "ck": "<p>عتغافلقربزیسطیزبرلفقفاغعتزبرلاذتنمکجمحنخاعتغلب</p>"
       }
-    ],
+    
   },
   reducers: {
     setInformation: (state, action) => {

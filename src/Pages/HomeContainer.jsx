@@ -4,7 +4,7 @@ import { setInformation } from "../redux/features/Slice";
 import { useForm, Controller } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
-import { Grid, Container, ThemeProvider, createTheme ,Box , Button} from "@mui/material";
+import { Grid, Container, ThemeProvider, createTheme, Box, Button } from "@mui/material";
 
 import Selectcomponentcontainer from '../components/selectcomponents/container';
 import TextFieldcomponentcontainer from "../components/textFieldcomponents/container";
@@ -58,8 +58,8 @@ const schema = yup.object().shape({
 const HomeContainer = () => {
     const { control, handleSubmit, setValue, watch, formState: { errors } } = useForm({
         resolver: yupResolver(schema),
-        mode: 'onChange', 
-        reValidateMode: 'onChange', 
+        mode: 'onChange',
+        reValidateMode: 'onChange',
     });
 
     const onSubmit = data => {
@@ -77,17 +77,19 @@ const HomeContainer = () => {
                 <form noValidate autoComplete="off" onSubmit={handleSubmit(onSubmit)}>
                     <Grid container spacing={4}>
                         <TextFieldcomponentcontainer Controller={Controller} control={control} errors={errors} />
-                        <Genedercomponents control={control} Controller={Controller} errors={errors}/>
+                        <Genedercomponents control={control} Controller={Controller} errors={errors} />
                         <Selectcomponentcontainer Controller={Controller} control={control} watch={watch} setValue={setValue} errors={errors} />
                         <CkComponentContainer Controller={Controller} control={control} errors={errors} />
-                        {/* <Grid item xs={6}><DataTable /></Grid> */}
                     </Grid>
-                    <Box sx={{direction:'ltr'}}>
+                    <Box sx={{ direction: 'ltr' }}>
 
-                    <Button sx={{margin:'2rem 0'}} color="primary" size="large" variant="contained" type="submit">ثـــبت اطـــلاعات اولیه</Button>
+                        <Button sx={{ margin: '2rem 0' }} color="primary" size="large" variant="contained" type="submit">ثـــبت اطـــلاعات اولیه</Button>
 
                     </Box>
                 </form>
+
+                <DataTable />
+
             </Container>
         </ThemeProvider>
     );

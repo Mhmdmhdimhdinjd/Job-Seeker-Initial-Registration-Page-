@@ -15,18 +15,25 @@ body {
   margin: 0;
 }
 
+.table__container{
+  width: 100%;
+  max-width: 100%;
+  overflow-x:scroll;
+  text-align: center;
+}
+
 
 .table {
   background-color: #292929;
   border-collapse: collapse;
   border-radius: 10px;
   font-family: 'Arial', sans-serif;
-  overflow-x: auto;
   margin-top: 2rem;
   -webkit-border-radius: 10px;
   -moz-border-radius: 10px;
   -ms-border-radius: 10px;
   -o-border-radius: 10px;
+  overflow: hidden;
 }
 
 .table th,
@@ -34,8 +41,12 @@ body {
   border: 1px solid #444;
   padding: 10px;
 }
-.text-wrap { white-space: normal; }
+
 .table th {
   color: #1e90ff;
+  /* آبی برای اولین هدر */
+}
+.table td {
+  color: #ffe11e;
   /* آبی برای اولین هدر */
 }
