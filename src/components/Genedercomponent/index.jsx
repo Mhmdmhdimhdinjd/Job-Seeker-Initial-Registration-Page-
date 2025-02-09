@@ -11,7 +11,7 @@ const Genedercomponents = ({ Controller, control, errors }) => {
         <Grid item xs={12} sm={6}>
             <h3>انتخاب جنسیت</h3>
             <Controller
-                name="gender"
+                name="geneder"
                 control={control}
                 render={({ field }) => (
                     <Box>
@@ -31,7 +31,7 @@ const Genedercomponents = ({ Controller, control, errors }) => {
                                 <FormControlLabel value="female" control={<Radio />} label="زن" />
                             </RadioGroup>
                         </FormControl>
-                        {errors.gender && <Typography color="error">{errors.gender.message}</Typography>}
+                        {errors.geneder && <Typography color="error">{errors.geneder.message}</Typography>}
 
                     </Box>
                 )}
