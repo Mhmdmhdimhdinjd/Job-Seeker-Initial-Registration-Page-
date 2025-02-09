@@ -48,9 +48,10 @@ const schema = yup.object().shape({
     lastName: yup.string().matches(/^[\u0600-\u06FF\s]+$/, 'فقط حروف فارسی مجاز است').required('نام خانوادگی ضروری است'),
     nationalCode: yup.string().matches(/^\d{10}$/, 'کد ملی باید 10 رقم باشد').required('کد ملی ضروری است'),
     phoneNumber: yup.string().matches(/^09\d{9}$/, 'شماره تماس باید 11 رقم و با 09 شروع شود').required('شماره تماس ضروری است'),
+    geneder:yup.string().required('لطفا جنسیت را وارد کنید'),
     categories: yup.array().max(2, 'حداکثر ۲ دسته‌بندی می‌توانید انتخاب کنید').required('انتخاب دسته‌بندی‌ها ضروری است'),
     interests: yup.array().max(3, 'حداکثر ۳ گزینه می‌توانید انتخاب کنید').required('انتخاب گزینه‌ها اجباری است'),
-    // ck: yup.string().min(20, 'رزومه باید حداقل 20 حرف باشد').required('رزومه ضروری است'),
+    ck: yup.string().min(20, 'رزومه باید حداقل 20 حرف باشد').required('رزومه ضروری است'),
     province: yup.object().required("استان را انتخاب کنید"),
     city: yup.object().required("شهر را انتخاب کنید"),
 });
