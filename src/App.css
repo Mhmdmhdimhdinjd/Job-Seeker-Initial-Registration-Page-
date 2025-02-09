@@ -18,6 +18,7 @@ body {
 .table__container{
   width: 100%;
   max-width: 100%;
+  height: fit-content;
   overflow-x:scroll;
   text-align: center;
 }

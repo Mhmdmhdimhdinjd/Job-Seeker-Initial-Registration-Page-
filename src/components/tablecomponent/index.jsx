@@ -1,5 +1,5 @@
 import { Typography } from "@mui/material";
-import React, {useMemo } from "react";
+import React, { useMemo } from "react";
 import { useSelector } from "react-redux";
 import { useTable } from 'react-table';
 
@@ -22,19 +22,19 @@ import { useTable } from 'react-table';
 
 const DataTable = () => {
 
-    const storedData = [useSelector((state) => state.job_seeker.PersonalInformation)]
+  const storedData = [useSelector((state) => state.job_seeker.PersonalInformation)]
 
-    const data = storedData.map(item => ({
-      firstName: item.firstName,
-      lastName: item.lastName,
-      phoneNumber: item.phoneNumber,
-      nationalCode: item.nationalCode,
-      province: item.province.label,
-      city: item.city.label,
-      categories: item.categories.map(category => category.label).join(','),
-      gender: item.gender,
-      interests: item.interests.map(interest => interest.label).join(','),
-    }));
+  const data = storedData.map(item => ({
+    firstName: item.firstName,
+    lastName: item.lastName,
+    phoneNumber: item.phoneNumber,
+    nationalCode: item.nationalCode,
+    province: item.province.label,
+    city: item.city.label,
+    categories: item.categories.map(category => category.label).join(','),
+    gender: item.gender,
+    interests: item.interests.map(interest => interest.label).join(','),
+  }));
 
   const columns = useMemo(
     () => [
@@ -45,7 +45,17 @@ const DataTable = () => {
       { Header: 'استان', accessor: 'province' },
       { Header: 'شهر', accessor: 'city' },
       { Header: 'دسته‌بندی‌ها', accessor: 'categories' },
-      { Header: 'جنسیت', accessor: 'gender' },
+      {
+        Header: 'جنسیت',
+        accessor: 'gender',
+        Cell: ({ row }) => {
+          const gender = row.original.gender;
+          return gender === 'male' ? 'مرد' : gender === 'female' ? 'زن' : gender;
+        }
+      }
+      
+      ,
+      // { Header: 'جنسیت', accessor: 'gender' },
       { Header: 'علاقه‌مندی‌ها', accessor: 'interests' },
     ],
     []
@@ -69,7 +79,7 @@ const DataTable = () => {
               {row.cells.map(cell => (
                 <tr key={cell.column.id}>
                   <th >{cell.column.Header}</th>
-                  <td  sx={{  wordWrap: 'break-word', whiteSpace: 'normal' }}>
+                  <td sx={{ wordWrap: 'break-word', whiteSpace: 'normal' }}>
                     {cell.render('Cell')}
                   </td>
                 </tr>
@@ -79,9 +89,9 @@ const DataTable = () => {
         );
       })}
 
-<Typography>
-  درصورتی که جدول بصورت کامل مشخص نیست اسکرول کنید
-</Typography>
+      <Typography>
+        درصورتی که جدول بصورت کامل مشخص نیست اسکرول کنید
+      </Typography>
 
     </div>
   );

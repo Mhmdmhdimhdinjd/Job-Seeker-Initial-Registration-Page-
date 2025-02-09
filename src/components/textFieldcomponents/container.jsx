@@ -7,14 +7,14 @@ const TextFielddata = [
         id: 1,
         title: 'نام',
         name: 'firstName',
-        placeholder: 'enter your first name',
+        placeholder: 'نام خود را وارد کنید',
         defaultValue: null
     },
     {
         id: 2,
         title: 'نام خانوادگی',
         name: 'lastName',
-        placeholder: 'enter your last name',
+        placeholder: 'نام خانوادکی خود را وارد کنید',
         defaultValue: null
     },
     {
