@@ -71,10 +71,10 @@ const DataTable = () => {
 
   return (
     <div className="table__container">
-      {rows.map(row => {
+      {rows.map((row , rowIndex) => {
         prepareRow(row);
         return (
-          <table className="table" {...getTableProps()} style={{ width: '100%', borderCollapse: 'collapse', marginBottom: '20px' }}>
+          <table key={rowIndex} className="table" {...getTableProps()} style={{ width: '100%', borderCollapse: 'collapse', marginBottom: '20px' }}>
             <tbody {...getTableBodyProps()}>
               {row.cells.map(cell => (
                 <tr key={cell.column.id}>
