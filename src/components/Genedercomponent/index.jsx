@@ -13,6 +13,7 @@ const Genedercomponents = ({ Controller, control, errors }) => {
             <Controller
                 name="geneder"
                 control={control}
+                defaultValue="" 
                 render={({ field }) => (
                     <Box>
                         <FormControl component="fieldset">
