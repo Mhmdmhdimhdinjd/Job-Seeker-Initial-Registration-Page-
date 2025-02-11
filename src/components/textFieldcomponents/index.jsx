@@ -8,7 +8,6 @@ const TextFieldcomponent = forwardRef(({ data, errors, ...props }, ref) => (
         placeholder={data.placeholder}
         variant="outlined"
         fullWidth
-        defaultValue={data.defaultValue}
         error={!!errors[data.name]}
         helperText={errors[data.name]?.message}
     />
