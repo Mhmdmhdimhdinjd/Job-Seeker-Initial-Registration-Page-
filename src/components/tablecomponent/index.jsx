@@ -32,7 +32,7 @@ const DataTable = () => {
     province: item.province.label,
     city: item.city.label,
     categories: item.categories.map(category => category.label).join(','),
-    gender: item.gender,
+    geneder: item.geneder,
     interests: item.interests.map(interest => interest.label).join(','),
   }));
 
@@ -47,15 +47,14 @@ const DataTable = () => {
       { Header: 'دسته‌بندی‌ها', accessor: 'categories' },
       {
         Header: 'جنسیت',
-        accessor: 'gender',
+        accessor: 'geneder',
         Cell: ({ row }) => {
-          const gender = row.original.gender;
+          const gender = row.original.geneder;
           return gender === 'male' ? 'مرد' : gender === 'female' ? 'زن' : gender;
         }
       }
       
       ,
-      // { Header: 'جنسیت', accessor: 'gender' },
       { Header: 'علاقه‌مندی‌ها', accessor: 'interests' },
     ],
     []
