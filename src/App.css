@@ -25,7 +25,7 @@ body {
 
 
 .table {
-  background-color: #292929;
+  background-color: #ffffff;
   border-collapse: collapse;
   border-radius: 10px;
   font-family: 'Arial', sans-serif;
@@ -35,17 +35,18 @@ body {
   -ms-border-radius: 10px;
   -o-border-radius: 10px;
   overflow: hidden;
+  border: 1px solid #1e90ff;
 }
 
 .table th,
 .table td {
-  border: 1px solid #444;
+  border: 1px solid #1e90ff;
   padding: 10px;
 }
 
 .table th {
-  color: #1e90ff;
+  color: #000000;
 }
 .table td {
-  color: #ffe11e;
+  color: #000000;
 }
