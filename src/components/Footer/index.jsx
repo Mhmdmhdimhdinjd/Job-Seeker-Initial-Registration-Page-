@@ -43,7 +43,7 @@ function Footer() {
                 </Accordion>
             </Box>
 
-            <Grid spacing={2} sx={{maxWidth:'300px', mx:'auto' , my:'2rem'}} container>
+            <Grid spacing={2} sx={{maxWidth:'300px', mx:'auto' , my:'2rem' , justifyContent:'center'}} container>
 
                 <Grid item >
 
