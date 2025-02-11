@@ -14,8 +14,9 @@ const CkComponentContainer = ({ Controller, control , errors}) => {
                 control={control}
                 render={({ field }) => (
                     <CkComponent
-                        value={field.value}
-                        onChange={field.onChange}
+                        // value={field.value}
+                        // onChange={field.onChange}
+                        {...field}
                     />
                 )}
             />

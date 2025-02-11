@@ -20,6 +20,9 @@ const SelectComponent = forwardRef(({ errors, data, ...props }, ref) => {
                 closeMenuOnSelect={data.closeMenuOnSelect}
                 {...props}
             />
+
+            {/* {console.log(data.isDisabled)} */}
+
             {errors[data.name] && (
                 <Typography color="error" fontSize="0.75rem">
                     {errors[data.name].message}

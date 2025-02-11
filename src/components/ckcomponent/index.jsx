@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef, useMemo } from 'react';
+import { useState, useEffect, useRef, useMemo , forwardRef } from 'react';
 import { CKEditor } from '@ckeditor/ckeditor5-react';
 import {
     ClassicEditor,
@@ -53,7 +53,7 @@ const LICENSE_KEY = 'eyJhbGciOiJFUzI1NiJ9.eyJleHAiOjE3Mzk5MjMxOTksImp0aSI6IjFmNm
 
 const CLOUD_SERVICES_TOKEN_URL = 'https://qdzq_nllmncn.cke-cs.com/token/dev/55b815075b091221c3a1c260ea96c49020510b978b3a0de731205118275c?limit=10';
 
-const CkComponent = ({ value, onChange }) => {
+const CkComponent = forwardRef(({ value, onChange }, ref) => {
     const editorContainerRef = useRef(null);
     const editorRef = useRef(null);
     const [isLayoutReady, setIsLayoutReady] = useState(false);
@@ -238,7 +238,7 @@ const CkComponent = ({ value, onChange }) => {
     }, [editorConfig]);
 
     return (
-        <div className="main-container">
+        <div className="main-container" ref={ref}>
             <div className="editor-container editor-container_classic-editor" ref={editorContainerRef}>
                 <div className="editor-container__editor">
                     <div ref={editorRef}>
@@ -247,7 +247,12 @@ const CkComponent = ({ value, onChange }) => {
                                 editor={ClassicEditor}
                                 config={editorConfig}
                                 data={value}
-                                onChange={(event, editor) => onChange(editor.getData())}
+                                onReady={(editor) => {
+                                    if (ref) {
+                                        ref.current = editor;
+                                    }
+                                }}
+                                onChange={( editor) => onChange(editor.getData())}
                             />
                         )}
                     </div>
@@ -255,7 +260,7 @@ const CkComponent = ({ value, onChange }) => {
             </div>
         </div>
     );
-};
+});
 
 /**
  * This function exists to remind you to update the config needed for premium features.

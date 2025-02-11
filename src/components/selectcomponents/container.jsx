@@ -1,6 +1,8 @@
-import React, { useState } from "react";
+import React, { useEffect } from "react";
 import Selectcomponent from ".";
 import { Grid } from "@mui/material";
+
+import { useWatch } from "react-hook-form";
 
 
 const optionsProvince = [
@@ -41,23 +43,35 @@ const interestOptions = [
 
 
 
-const Selectcomponentcontainer = ({ control, Controller, setValue , errors}) => {
+const Selectcomponentcontainer = ({ control, Controller , setValue , errors}) => {
+
+    const selectedProvince = useWatch({
+        control,
+        name: 'province',
+      });
 
 
+    // const [selectedProvince, setSelectedProvince] = useState(null);
 
-    const [selectedProvince, setSelectedProvince] = useState(null);
-
-    const handleProvinceChange = selectedOption => {
-        setSelectedProvince(selectedOption);
-        setValue('city', null);
+    // const handleProvinceChange = selectedOption => {
+        // setSelectedProvince(selectedOption);
+    //     setValue('city', null);
         
-    };
+    // };
+
+    // setSelectedProvince(watch('province'))
+
+    useEffect(() => {
+        if (selectedProvince) {
+          setValue('city', null);
+        }
+      }, [selectedProvince, setValue]);
 
     const selectdata = [
         {
             id: 1,
             name: 'province',
-            value: selectedProvince,
+            // value: selectedProvince,
             title: 'اتخاب استان',
             options: optionsProvince,
             placeholder: 'لطفا استان را انتخاب کنید',
@@ -112,15 +126,7 @@ const Selectcomponentcontainer = ({ control, Controller, setValue , errors}) => 
                                 <Selectcomponent
                                     {...field}
                                     errors={errors}
-                                    data={{
-                                        ...data,
-                                        onChange: (selectedOption) => {
-                                            field.onChange(selectedOption);
-                                            if (data.name === 'province') {
-                                                handleProvinceChange(selectedOption);
-                                            }
-                                        }
-                                    }}
+                                    data={data}
                                 />
                             )}
                         />
