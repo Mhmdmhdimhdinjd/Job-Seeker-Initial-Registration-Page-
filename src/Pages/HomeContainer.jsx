@@ -12,6 +12,7 @@ import CkComponentContainer from "../components/ckcomponent/container";
 import Navbar from "../components/Navbarcomponents";
 import DataTable from "../components/tablecomponent";
 import Genedercomponents from "../components/Genedercomponent";
+import Footer from "../components/Footer";
 
 
 const theme = createTheme({
@@ -92,6 +93,7 @@ const HomeContainer = () => {
                 <DataTable />
 
             </Container>
+            <Footer/>
         </ThemeProvider>
     );
 };
