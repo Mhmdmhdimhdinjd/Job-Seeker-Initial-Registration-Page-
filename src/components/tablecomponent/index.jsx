@@ -24,6 +24,8 @@ const DataTable = () => {
 
   const storedData = [useSelector((state) => state.job_seeker.PersonalInformation)]
 
+
+
   const data = storedData.map(item => ({
     firstName: item.firstName,
     lastName: item.lastName,
@@ -53,7 +55,7 @@ const DataTable = () => {
           return gender === 'male' ? 'مرد' : gender === 'female' ? 'زن' : gender;
         }
       }
-      
+
       ,
       { Header: 'علاقه‌مندی‌ها', accessor: 'interests' },
     ],
@@ -70,7 +72,7 @@ const DataTable = () => {
 
   return (
     <div className="table__container">
-      {rows.map((row , rowIndex) => {
+      {rows.map((row, rowIndex) => {
         prepareRow(row);
         return (
           <table key={rowIndex} className="table" {...getTableProps()} style={{ width: '100%', borderCollapse: 'collapse', marginBottom: '20px' }}>
