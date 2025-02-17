@@ -53,7 +53,6 @@ const LICENSE_KEY = 'eyJhbGciOiJFUzI1NiJ9.eyJleHAiOjE3Mzk5MjMxOTksImp0aSI6IjFmNm
 
 const CLOUD_SERVICES_TOKEN_URL = 'https://qdzq_nllmncn.cke-cs.com/token/dev/55b815075b091221c3a1c260ea96c49020510b978b3a0de731205118275c?limit=10';
 
-// const CkComponent = ({ value, onChange }) => {
 const CkComponent = forwardRef(({ value, onChange }, ref) => {
 
     const editorContainerRef = useRef(null);

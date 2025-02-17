@@ -14,6 +14,19 @@ import DataTable from "../components/tablecomponent";
 import Genedercomponents from "../components/Genedercomponent";
 import Footer from "../components/Footer";
 
+const defaultValue = {
+    firstName: '',
+    lastName: '',
+    phoneNumber: '09',
+    geneder: "",
+    nationalCode: '',
+    ck: ' ',
+    province: null,
+    categories: null,
+    interests: null,
+    city: null,
+}
+
 
 const theme = createTheme({
     typography: {
@@ -45,11 +58,11 @@ const theme = createTheme({
 });
 
 const schema = yup.object().shape({
-    firstName: yup.string().required('نام ضروری است').matches(/^[\u0600-\u06FF\s]+$/,'فقط حروف فارسی مجاز است'),//روش اول 
-    lastName: yup.string().matches(/^[\u0600-\u06FF\s]+$/,{message: 'فقط حروف فارسی مجاز است' , excludeEmptyString: true,}).required('نام خانوادگی ضروری است'),//روش دوم
-    nationalCode: yup.string().matches(/^\d{10}$/,{message: 'کد ملی باید 10 رقم باشد' , excludeEmptyString:true}).required('کد ملی ضروری است'),
-    phoneNumber: yup.string().matches(/^09\d{9}$/,{message: 'شماره تماس باید 11 رقم و با 09 شروع شود' , excludeEmptyString:true}).required('شماره تماس ضروری است'),
-    geneder:yup.string().required('لطفا جنسیت را وارد کنید'),
+    firstName: yup.string().required('نام ضروری است').matches(/^[\u0600-\u06FF\s]+$/, 'فقط حروف فارسی مجاز است'),//روش اول 
+    lastName: yup.string().matches(/^[\u0600-\u06FF\s]+$/, { message: 'فقط حروف فارسی مجاز است', excludeEmptyString: true, }).required('نام خانوادگی ضروری است'),//روش دوم
+    nationalCode: yup.string().matches(/^\d{10}$/, { message: 'کد ملی باید 10 رقم باشد', excludeEmptyString: true }).required('کد ملی ضروری است'),
+    phoneNumber: yup.string().matches(/^09\d{9}$/, { message: 'شماره تماس باید 11 رقم و با 09 شروع شود', excludeEmptyString: true }).required('شماره تماس ضروری است'),
+    geneder: yup.string().required('لطفا جنسیت را وارد کنید'),
     categories: yup.array().max(2, 'حداکثر ۲ دسته‌بندی می‌توانید انتخاب کنید').required('انتخاب دسته‌بندی‌ها ضروری است'),
     interests: yup.array().max(3, 'حداکثر ۳ گزینه می‌توانید انتخاب کنید').required('انتخاب گزینه‌ها اجباری است'),
     ck: yup.string().required('رزومه ضروری است').min(20, 'رزومه باید حداقل 20 حرف باشد'),
@@ -58,8 +71,9 @@ const schema = yup.object().shape({
 });
 
 const HomeContainer = () => {
-    const { control, handleSubmit, setValue, watch, formState: { errors } } = useForm({
+    const { control, handleSubmit, reset, setValue, formState: { errors } } = useForm({
         resolver: yupResolver(schema),
+        defaultValues: defaultValue
         // mode: 'onChange',
         // reValidateMode: 'onChange',
     });
@@ -67,6 +81,7 @@ const HomeContainer = () => {
     const onSubmit = data => {
         console.log(data);
         dispatch(setInformation(data))
+        reset()
     };
 
     const dispatch = useDispatch();
@@ -80,7 +95,7 @@ const HomeContainer = () => {
                     <Grid container spacing={4}>
                         <TextFieldcomponentcontainer Controller={Controller} control={control} errors={errors} />
                         <Genedercomponents control={control} Controller={Controller} errors={errors} />
-                        <Selectcomponentcontainer Controller={Controller} control={control}  setValue={setValue} errors={errors} />
+                        <Selectcomponentcontainer Controller={Controller} control={control} setValue={setValue} errors={errors} />
                         <CkComponentContainer Controller={Controller} control={control} errors={errors} />
                     </Grid>
                     <Box sx={{ direction: 'ltr' }}>
@@ -93,7 +108,7 @@ const HomeContainer = () => {
                 <DataTable />
 
             </Container>
-            <Footer/>
+            <Footer />
         </ThemeProvider>
     );
 };
